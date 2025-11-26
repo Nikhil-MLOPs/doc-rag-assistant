@@ -4,6 +4,8 @@ from app.api.health import router as health_router
 from app.api.documents import router as documents_router
 from app.api.search import router as search_router
 from app.api.qa import router as qa_router   # 👈 NEW (just add, don’t replace)
+from fastapi.staticfiles import StaticFiles
+
 
 
 def create_app() -> FastAPI:
@@ -11,6 +13,9 @@ def create_app() -> FastAPI:
         title="Doc RAG Assistant API",
         version="0.1.0",
     )
+
+    # Serve static frontend
+    app.mount("/frontend", StaticFiles(directory="frontend", html=True), name="frontend")
 
     app.include_router(health_router, prefix="/api")
     app.include_router(documents_router, prefix="/api")

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Doc RAG Assistant</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Doc RAG Assistant</h1>
+    <p>Upload documents and ask questions with RAG + LLM</p>
+  </header>
+
+  <main>
+    <!-- Upload Section -->
+    <section class="card">
+      <h2>1. Upload Document</h2>
+      <form id="upload-form">
+        <input type="file" id="file-input" name="file" accept=".txt,.pdf,.docx" required />
+        <button type="submit">Upload</button>
+      </form>
+      <p id="upload-status" class="status"></p>
+    </section>
+
+    <!-- Documents List -->
+    <section class="card">
+      <h2>2. Uploaded Documents</h2>
+      <button id="refresh-docs-btn" type="button">Refresh List</button>
+      <ul id="documents-list"></ul>
+    </section>
+
+    <!-- QA Section -->
+    <section class="card">
+      <h2>3. Ask a Question</h2>
+      <form id="qa-form">
+        <label for="question-input">Question:</label>
+        <textarea id="question-input" rows="3" placeholder="Ask something about your documents..." required></textarea>
+        <button type="submit">Ask</button>
+      </form>
+      <div id="qa-result">
+        <h3>Answer</h3>
+        <p id="answer-text"></p>
+        <h3>Sources</h3>
+        <ul id="sources-list"></ul>
+      </div>
+      <p id="qa-status" class="status"></p>
+    </section>
+  </main>
+
+  <footer>
+    <small>Backend: FastAPI · RAG: LangChain + Chroma + Ollama</small>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
