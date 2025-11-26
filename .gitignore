@@ -16,8 +16,11 @@ __pycache__/
 Thumbs.db
 
 # DVC & data (we'll use later)
-data/
-.dvc/
+# Ignore data folders, but NOT .dvc metadata files
+data/**
+!data/*.dvc
+!data/**/*.dvc
+
 .cache/
 
 # MLflow (later)
