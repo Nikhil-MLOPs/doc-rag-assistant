@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 
 from app.api.health import router as health_router
+from app.api.documents import router as documents_router
 
 
 def create_app() -> FastAPI:
@@ -11,6 +12,7 @@ def create_app() -> FastAPI:
 
     # Include routers
     app.include_router(health_router, prefix="/api")
+    app.include_router(documents_router, prefix="/api")
 
     @app.get("/", tags=["root"])
     def read_root():
