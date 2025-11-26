@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual env
+.venv/
+
+# IDE
+.vscode/
+.idea/
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# DVC & data (we'll use later)
+data/
+.dvc/
+.cache/
+
+# MLflow (later)
+mlruns/
+
+# Pytest cache
+.pytest_cache/
