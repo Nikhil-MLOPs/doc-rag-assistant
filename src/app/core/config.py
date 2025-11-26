@@ -14,6 +14,7 @@ class Settings(BaseSettings):
     # Data directories
     data_dir: Path = base_dir / "data"
     raw_docs_dir: Path = data_dir / "raw"
+    vector_store_dir: Path = data_dir / "chroma_db"
 
     class Config:
         env_file = ".env"
