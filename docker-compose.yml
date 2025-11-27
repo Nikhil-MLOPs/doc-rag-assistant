@@ -1,0 +1,19 @@
+version: "3.9"
+
+services:
+  api:
+    build: .
+    container_name: doc-rag-assistant-api
+    ports:
+      - "8000:8000"
+    environment:
+      # Let the app talk to Ollama running on the host (Docker Desktop supports this)
+      - OLLAMA_BASE_URL=http://host.docker.internal:11434
+    volumes:
+      # Mount code and data so changes reflect without rebuilding every time (dev-friendly)
+      - ./src:/app/src
+      - ./frontend:/app/frontend
+      - ./data:/app/data
+      - ./mlruns:/app/mlruns
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --app-dir src --reload
+    restart: unless-stopped

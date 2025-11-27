@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual env
+.venv/
+
+# Git & DVC internals
+.git/
+.dvc/
+.dvcignore
+
+# Local data and artifacts (we'll mount as volumes instead)
+data/
+mlruns/
+
+# IDE/editor
+.vscode/
+.idea/
+
+# Other
+.pytest_cache/
