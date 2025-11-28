@@ -1,5 +1,7 @@
 from typing import Dict, Any
 import time
+import os
+
 
 from langchain.chains import RetrievalQA
 from langchain_community.llms import Ollama
@@ -19,9 +21,13 @@ def get_qa_chain():
     - Retrieves chunks from Chroma
     - Sends them to the LLM (Ollama) for answering
     """
+    # Use env var when in Docker, fallback to localhost when running locally
+    ollama_base_url = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
+
     llm = Ollama(
         model="mistral",
         temperature=0.3,
+        base_url=ollama_base_url,
     )
 
     # This should match what you're using in retrieval
@@ -52,6 +58,7 @@ Answer:
         return_source_documents=True,
     )
     return qa_chain
+
 
 
 def answer_question(query: str) -> Dict[str, Any]:
